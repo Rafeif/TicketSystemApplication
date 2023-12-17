@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TicketSystemApplication.Models.UserViewModel>
+
+
+
+
+@{
+    ViewData["Title"] = "Roles List";
+}
+
+<h1>Users</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            <th>
+                    @Html.DisplayNameFor(model => model.Role)
+            </th>
+          
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                
+
+                <td>
+                    <table>
+                        <tr> <a asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-outline-primary me-1">Edit</a></tr>
+                      @*  <tr> <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-success me-1">Details</a></tr>*@
+                        <tr>
+                            <form asp-action="DeleteRole" asp-route-id="@item.Id" method="post">
+                                <input type="submit" class="btn btn-outline-danger" value="Delete" onclick="return confirm('Are you sure you want to delete this item?') " />
+                            </form>
+                        </tr>
+                   
+                   
+                   
+                    </table>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
